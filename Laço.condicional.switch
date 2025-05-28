@@ -1,0 +1,61 @@
+const readline = require('readline');
+
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout
+});
+
+console.log("Produtos:");
+console.log("1 - Cachorro Quente (R$ 10.00)");
+console.log("2 - X-Salada (R$ 15.00)");
+console.log("3 - X-Bacon (R$ 18.00)");
+console.log("4 - Bauru (R$ 12.00)");
+console.log("5 - Refrigerante (R$ 8.00)");
+console.log("6 - Suco de laranja (R$ 13.00)\n");
+
+rl.question("Código do Produto (1 a 6): ", function(codigo) {
+  rl.question("Quantidade: ", function(quantidade) {
+    codigo = parseInt(codigo);
+    quantidade = parseInt(quantidade);
+
+    let nomeProduto;
+    let preco;
+
+    switch (codigo) {
+      case 1:
+        nomeProduto = "Cachorro Quente";
+        preco = 10.00;
+        break;
+      case 2:
+        nomeProduto = "X-Salada";
+        preco = 15.00;
+        break;
+      case 3:
+        nomeProduto = "X-Bacon";
+        preco = 18.00;
+        break;
+      case 4:
+        nomeProduto = "Bauru";
+        preco = 12.00;
+        break;
+      case 5:
+        nomeProduto = "Refrigerante";
+        preco = 8.00;
+        break;
+      case 6:
+        nomeProduto = "Suco de laranja";
+        preco = 13.00;
+        break;
+      default:
+        console.log("Código inválido.");
+        rl.close();
+        return;
+    }
+
+    const total = preco * quantidade;
+    console.log(`\nProduto: ${nomeProduto}`);
+    console.log(`Valor total: R$ ${total.toFixed(2)}`);
+
+    rl.close();
+  });
+});
